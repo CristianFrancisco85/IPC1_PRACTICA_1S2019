@@ -15,7 +15,7 @@ public class Launcher {
     
     
     
-    public static void main(String[] args) {
+public static void main(String[] args) {
         
     Data DataCollector = new Data();
         
@@ -42,11 +42,10 @@ while(runTime){
     "| [6] POKEMONES MENOS USADOS                    |\n"+
     "| [7] SALIR                                     |\n"+
     "-------------------------------------------------\n");
-        menu=S.next();
-        control=(Tools.validaNum(menu,0,7))?true:false;
-        
-        
-        Tools.clearMatrix(0,74,0,159);
+    menu=S.next();
+    control=(Tools.validaNum(menu,0,7))?true:false;  
+    Tools.clearMatrix(0,74,0,159);
+    
     if(control){
         
     switch (Integer.parseInt(menu)){
@@ -59,6 +58,7 @@ while(runTime){
             Launcher.listPokemon(Squirtle,20);
             Launcher.listPokemon(Bulbasaur,18);
             break;
+            
     case 2:
             System.out.println("\n SELECCIONA EL NOMBRE DEL POKEMON");
             System.out.println(
@@ -115,7 +115,10 @@ while(runTime){
                 System.err.println("OPCION DE POKEMON NO VALIDA");
                 }
             break;      
-    case 3:
+    case 3:     
+            break;
+    case 4:
+        // SE PIDEN LOS DATOS DE LOS JUGADORES Y LOS POKEMONES A USAR
             System.out.println("Ingrese Nombre del jugador 1");
             DataCollector.currentBattle[0]=S.next();
             System.out.println("\n SELECCIONA TUS POKEMONES");
@@ -149,7 +152,7 @@ while(runTime){
                 }
     
             System.out.println("Ingrese Nombre del jugador 2");
-            DataCollector.currentBattle[6]=S.next();
+            DataCollector.currentBattle[5]=S.next();
             System.out.println("\n SELECCIONA TUS POKEMONES");
             System.out.println(
             "----------------POKEMONES----------------\n"+
@@ -164,7 +167,7 @@ while(runTime){
             System.out.print("\n Primer Pokemon: ");
             menu=S.next();
                 if(Tools.validaNum(menu,1,6)){
-                    DataCollector.currentBattle[5]=menu;        
+                    DataCollector.currentBattle[6]=menu;        
                 }
                 else{
                     System.err.println("OPCION INVALIDA");
@@ -179,13 +182,120 @@ while(runTime){
                     System.err.println("OPCION INVALIDA");
                     break;
                 }
-                
-                
-            
-            
+        //Se clasifican los datos para mandarlos a la funcion de Battle
+        Pokemon pok1=Torchic;
+        Pokemon pok2=Torchic;
+        Pokemon pok3=Torchic;
+        Pokemon pok4=Torchic;
+        
+        //pok(n) es igual al un objeto pokemon segun la decision del usuario.
+        switch(DataCollector.currentBattle[1]){
+            case "1":
+            pok1=Torchic;
+            Tools.writeMatrix(torchicIco,3,34,31,69);
             break;
-    case 4:
+            case "2":
+            pok1=Mudkip;
+            Tools.writeMatrix(mudkipIco,3,23,31,69);
             break;
+            case "3":
+            pok1=Treecko;
+            Tools.writeMatrix(treeckoIco,3,23,31,69);
+            break;
+            case "4":
+            pok1=Charmander;
+            Tools.writeMatrix(charmanderIco,3,25,31,69);
+            break;
+            case "5":
+            pok1=Squirtle;
+            Tools.writeMatrix(squirtleIco,3,23,31,69);
+            break;
+            case "6":
+            pok1=Bulbasaur;
+            Tools.writeMatrix(bulbasaurIco,3,21,31,69);
+        }
+        switch(DataCollector.currentBattle[3]){
+            case "1":
+            pok2=Torchic;
+            Tools.writeMatrix(torchicIco,3,34,81,119);
+            break;
+            case "2":
+            pok2=Mudkip;
+            Tools.writeMatrix(mudkipIco,3,23,81,119);
+            break;
+            case "3":
+            pok2=Treecko;
+            Tools.writeMatrix(treeckoIco,3,23,81,119);
+            break;
+            case "4":
+            pok2=Charmander;
+            Tools.writeMatrix(charmanderIco,3,25,81,119);
+            break;
+            case "5":
+            pok2=Squirtle;
+            Tools.writeMatrix(squirtleIco,3,23,81,119);
+            break;
+            case "6":
+            pok2=Bulbasaur;
+            Tools.writeMatrix(bulbasaurIco,3,21,81,119);
+        }
+        switch(DataCollector.currentBattle[6]){
+            case "1":
+            pok3=Torchic;
+            Tools.writeMatrix(torchicIco,43,74,31,69);
+            break;
+            case "2":
+            pok3=Mudkip;
+            Tools.writeMatrix(mudkipIco,43,63,31,69);
+            break;
+            case "3":
+            pok3=Treecko;
+            Tools.writeMatrix(treeckoIco,43,63,31,69);
+            break;
+            case "4":
+            pok3=Charmander;
+            Tools.writeMatrix(charmanderIco,43,65,31,69);
+            break;
+            case "5":
+            pok3=Squirtle;
+            Tools.writeMatrix(squirtleIco,43,63,31,69);
+            break;
+            case "6":
+            pok3=Bulbasaur;
+            Tools.writeMatrix(bulbasaurIco,43,61,31,69);
+        }
+        switch(DataCollector.currentBattle[8]){
+            case "1":
+            pok4=Torchic;
+            Tools.writeMatrix(torchicIco,43,74,81,119);
+            break;
+            case "2":
+            pok4=Mudkip;
+            Tools.writeMatrix(mudkipIco,43,63,841,119);
+            break;
+            case "3":
+            pok4=Treecko;
+            Tools.writeMatrix(treeckoIco,43,63,81,119);
+            break;
+            case "4":
+            pok4=Charmander;
+            Tools.writeMatrix(charmanderIco,43,65,81,119);
+            break;
+            case "5":
+            pok4=Squirtle;
+            Tools.writeMatrix(squirtleIco,43,63,81,119);
+            break;
+            case "6":
+            pok4=Bulbasaur;
+            Tools.writeMatrix(bulbasaurIco,43,61,81,119);
+        }
+        Tools.writeMatrix("JUGADOR 1: "+DataCollector.currentBattle[1],1,2,70,DataCollector.currentBattle[0].length()+80);
+        Tools.writeMatrix("JUGADOR 2: "+DataCollector.currentBattle[5],39,40,70,DataCollector.currentBattle[5].length()+80);
+        Tools.printMatrix(0,74,0,159);
+        //SE MANDAN DATOS A LA FUNCION BATTLE
+        Launcher.Battle(DataCollector.currentBattle, pok1, pok2, pok3, pok4); 
+        
+            break;        
     case 5:
             break;
     case 6:
@@ -198,13 +308,12 @@ while(runTime){
         }
     }
         
-    }
-        
-        
-    }
+}
+             
+}
     
     
-    
+// Lista el pokemon recibido    
 public static void listPokemon(Pokemon arg1,int lineas){
     
     Tools.writeMatrix(arg1.Icon,3,lineas+3,31,69);
@@ -240,7 +349,6 @@ if(propertie>=1 && propertie<=3){
                 else{
                     System.err.println("VALOR NO VALIDO");
                 }
-            objPok.Life=newValue;
             break;
             
             case 3:
@@ -261,16 +369,108 @@ else{
     return objPok;
 }
 
-public static String[] Battle(){
+public static String[] Battle(String [] BattleMatrix, Pokemon pok1,Pokemon pok2,Pokemon pok3,Pokemon pok4){
     
-    String currentBattle[];
-    currentBattle = new String[15];
+    boolean control=true;
+    int from,to;
+    int turno=(Pokemon.randomNumber(0,10)<=5)?1:2;
+    System.err.println("ES EL TURNO DEL JUGADOR "+turno);
     
+    //SE IMPRIME MATRIZ Y SE IMPRIMEN LAS STATS
     
+    while(control){
+        
+        // SI EL TURNO ES DEL JUGADOR 1
+        if(turno==1){
+        System.err.println("ES EL TURNO DEL JUGADOR "+turno);
+        System.out.println("¿CON QUE POKEMON DESEAS ATACAR?");
+        System.out.println(
+            "----------------POKEMONES-------------\n"+
+            "| [1] "+pok1.Name+"                   |\n"+
+            "| [2] "+pok2.Name+"                   |\n"+
+            "---------------------------------------");
+        from=S.nextInt();
+        System.out.println("¿A QUE POKEMON DESEAS ATACAR?");
+        System.out.println(
+            "----------------POKEMONES-------------\n"+
+            "| [1] "+pok3.Name+"                   |\n"+
+            "| [2] "+pok4.Name+"                   |\n"+
+            "---------------------------------------");
+        to=S.nextInt();
+        
+            if(Tools.validaNum(Integer.toString(from),1,2)&&Tools.validaNum(Integer.toString(to),1,2)){
+                //Se aumenta el contador de numeros de ataques realizados por el pokemon
+                BattleMatrix[2]=(from==1)?BattleMatrix[2]+1:BattleMatrix[2];
+                BattleMatrix[4]=(from==2)?BattleMatrix[4]+1:BattleMatrix[4];
+                
+                //Se realiza las resta a la vida del pokemon segun las decisiones tomadas
+                pok3.Life=(from==1&&to==1)?pok3.Life-pok1.Attack:pok3.Life;
+                pok3.Life=(from==2&&to==1)?pok3.Life-pok2.Attack:pok3.Life;
+                pok4.Life=(from==1&&to==2)?pok4.Life-pok1.Attack:pok4.Life;
+                pok4.Life=(from==2&&to==2)?pok4.Life-pok2.Attack:pok4.Life;
+                turno=2;
+                System.out.println(pok3.Life);
+                System.out.println(pok4.Life);
+            }
+            else{
+                System.err.println("OPCIONES NO VALIDAS");
+            }
+            
+        }
+        
+        // SI EL TURNO ES DEL JUGADOR 2
+        else{
+        System.err.println("ES EL TURNO DEL JUGADOR "+turno);
+        System.out.println("¿CON QUE POKEMON DESEAS ATACAR?");
+        System.out.println(
+            "----------------POKEMONES-------------\n"+
+            "| [1] "+pok3.Name+"                   |\n"+
+            "| [2] "+pok4.Name+"                   |\n"+
+            "---------------------------------------");
+        from=S.nextInt();
+        System.out.println("¿A QUE POKEMON DESEAS ATACAR?");
+        System.out.println(
+            "----------------POKEMONES-------------\n"+
+            "| [1] "+pok1.Name+"                   |\n"+
+            "| [2] "+pok2.Name+"                   |\n"+
+            "---------------------------------------");
+        to=S.nextInt();
+        
+            if(Tools.validaNum(Integer.toString(from),1,2)&&Tools.validaNum(Integer.toString(to),1,2)){
+                //Se aumenta el contador de numeros de ataques realizados por el pokemon
+                BattleMatrix[6]=(from==1)?BattleMatrix[6]+1:BattleMatrix[6];
+                BattleMatrix[8]=(from==2)?BattleMatrix[8]+1:BattleMatrix[8];
+                
+                //Se realiza las resta a la vida del pokemon segun las decisiones tomadas
+                pok1.Life=(from==1&&to==1)?pok1.Life-pok3.Attack:pok1.Life;
+                pok1.Life=(from==2&&to==1)?pok1.Life-pok4.Attack:pok1.Life;
+                pok2.Life=(from==1&&to==2)?pok2.Life-pok3.Attack:pok2.Life;
+                pok2.Life=(from==2&&to==2)?pok2.Life-pok4.Attack:pok2.Life;
+                turno=1;
+                System.out.println(pok1.Life);
+                System.out.println(pok2.Life);
+            }
+            else{
+                System.err.println("OPCIONES NO VALIDAS");
+            }
+            
+        }
+        
+        //SE IMPRIME MATRIZ Y STATS
+        if(pok1.Life<=0 && pok2.Life<=0){
+        System.out.println("EL GANADOR ES "+BattleMatrix[5]);
+        control=false;    
+        }
+        if(pok3.Life<=0 && pok4.Life<=0){
+        System.out.println("EL GANADOR ES "+BattleMatrix[0]);
+        control=false;
+        }
+    }
     
-    
-    return currentBattle;
+    return BattleMatrix;
 }
+
+
 
 public static void showPokemon(int pok1,int pok2,int pok3,int pok4){
     
