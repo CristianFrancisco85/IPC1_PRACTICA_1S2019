@@ -457,20 +457,24 @@ public static String[] Battle(String [] BattleMatrix, Pokemon pok1,Pokemon pok2,
         }
         
         //SE IMPRIME MATRIZ Y STATS
+        Launcher.showStats(pok1, pok2, pok3, pok4);
+        Tools.printMatrix(0,74,0,159);
+        
+        //SE VERIFICA SI HAY UN GANADOR
         if(pok1.Life<=0 && pok2.Life<=0){
         System.out.println("EL GANADOR ES "+BattleMatrix[5]);
+        BattleMatrix[10]=BattleMatrix[5];
         control=false;    
         }
         if(pok3.Life<=0 && pok4.Life<=0){
         System.out.println("EL GANADOR ES "+BattleMatrix[0]);
+        BattleMatrix[10]=BattleMatrix[0];
         control=false;
         }
     }
     
     return BattleMatrix;
 }
-
-
 
 public static void showPokemon(int pok1,int pok2,int pok3,int pok4){
     
@@ -488,7 +492,23 @@ public static void showPokemon(int pok1,int pok2,int pok3,int pok4){
     }
 }
 
-public static void showStats(int pok1,int pok2,int pok3,int pok4){
+public static void showStats(Pokemon pok1,Pokemon pok2,Pokemon pok3,Pokemon pok4){
+   
+    Tools.writeMatrix("NOMBRE: "+pok1.Name,10,11,6,13+pok1.Name.length());
+    Tools.writeMatrix("ATAQUE: "+Integer.toString(pok1.Attack),11,12,6,13+Integer.toString(pok1.Attack).length());
+    Tools.writeMatrix("VIDA: "+Integer.toString(pok1.Life),12,13,6,11+Integer.toString(pok1.Life).length());
+    
+    Tools.writeMatrix("NOMBRE: "+pok2.Name,10,11,130,13+pok2.Name.length());
+    Tools.writeMatrix("ATAQUE: "+Integer.toString(pok2.Attack),11,12,6,13+Integer.toString(pok2.Attack).length());
+    Tools.writeMatrix("VIDA: "+Integer.toString(pok2.Life),12,13,6,11+Integer.toString(pok2.Life).length());
+    
+    Tools.writeMatrix("NOMBRE: "+pok3.Name,50,51,6,13+pok3.Name.length());
+    Tools.writeMatrix("ATAQUE: "+Integer.toString(pok3.Attack),11,12,6,13+Integer.toString(pok3.Attack).length());
+    Tools.writeMatrix("VIDA: "+Integer.toString(pok3.Life),12,13,6,11+Integer.toString(pok3.Life).length());
+    
+    Tools.writeMatrix("NOMBRE: "+pok4.Name,50,51,130,13+pok4.Name.length());
+    Tools.writeMatrix("ATAQUE: "+Integer.toString(pok4.Attack),11,12,6,13+Integer.toString(pok4.Attack).length());
+    Tools.writeMatrix("VIDA: "+Integer.toString(pok4.Life),12,13,6,11+Integer.toString(pok4.Life).length());
     
 }
     
