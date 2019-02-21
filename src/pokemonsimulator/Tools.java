@@ -54,7 +54,7 @@ public abstract class Tools {
     }
     
     public static boolean validaNum(String arg1,int rango1,int rango2){
-      try{
+    try{
         Integer.parseInt(arg1);
         if(Integer.parseInt(arg1)>=rango1 && Integer.parseInt(arg1)<=rango2){
           return true;  

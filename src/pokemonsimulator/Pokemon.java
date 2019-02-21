@@ -4,7 +4,7 @@ package pokemonsimulator;
  * Clase Pokemon
  * @author Cristian Meoño
  */
-public class Pokemon {
+public class Pokemon implements Cloneable {
     
     public final String Icon;
     public String Name;
@@ -25,6 +25,7 @@ public class Pokemon {
        this.State= true;
     }
     
+    
     public static int randomNumber(int min,int max){   
        int randomNum=(int)Math.floor(Math.random()*(max-min+1)+(min));
        return randomNum;
@@ -35,9 +36,13 @@ public class Pokemon {
         this.State= true;   
     }
     
-    public void attackPokemon(){
+    public Pokemon clone() throws CloneNotSupportedException{
+    
+        return (Pokemon)super.clone();
         
     }
+    
+    
     
     
 }
