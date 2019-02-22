@@ -1,7 +1,7 @@
 package pokemonsimulator;
 
 /**
- * @author Cristian Meoño
+ * @author Cristian Meoño 201801397
  * Clase abstracta que tiene metodos para el funcionamiento del programa.
  */
 

@@ -10,7 +10,7 @@ public class Pokemon implements Cloneable {
     public String Name;
     public int Life; //50-100pts
     public int Attack; //5-20pts
-    public boolean State;
+    public String State;
     public int counter;
     
     /**
@@ -22,7 +22,8 @@ public class Pokemon implements Cloneable {
        this.Attack= randomNumber(5,20);
        this.Name=name;
        this.Icon=icon;
-       this.State= true;
+       this.State= "Vivo";
+       this.counter=0;
     }
     
     
@@ -30,11 +31,6 @@ public class Pokemon implements Cloneable {
        int randomNum=(int)Math.floor(Math.random()*(max-min+1)+(min));
        return randomNum;
    }
-    
-    public void resetPokemon(){
-        this.Life= randomNumber(50,100);
-        this.State= true;   
-    }
     
     public Pokemon clone() throws CloneNotSupportedException{
     

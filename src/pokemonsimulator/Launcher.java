@@ -115,9 +115,11 @@ while(runTime){
                 System.err.println("OPCION DE POKEMON NO VALIDA");
                 }
             break;      
-    case 3:     
+    case 3:
+        DataCollector.printData();
             break;
     case 4:
+        
         // SE PIDEN LOS DATOS DE LOS JUGADORES Y LOS POKEMONES A USAR
             System.out.print("\n Ingrese Nombre del Jugador 1: ");
             DataCollector.currentBattle[0]=S.next();
@@ -144,7 +146,7 @@ while(runTime){
             System.out.print("\n Segundo Pokemon: ");
             menu=S.next();
                 if(Tools.validaNum(menu,1,6)){
-                    DataCollector.currentBattle[3]=menu;        
+                    DataCollector.currentBattle[4]=menu;        
                 }
                 else{
                     System.err.println("OPCION INVALIDA");
@@ -152,7 +154,7 @@ while(runTime){
                 }
     
             System.out.print("\n Ingrese Nombre del Jugador 2: ");
-            DataCollector.currentBattle[5]=S.next();
+            DataCollector.currentBattle[7]=S.next();
             System.out.println("\n SELECCIONA TUS POKEMONES");
             System.out.println(
             "----------------POKEMONES----------------\n"+
@@ -167,7 +169,7 @@ while(runTime){
             System.out.print("\n Primer Pokemon: ");
             menu=S.next();
                 if(Tools.validaNum(menu,1,6)){
-                    DataCollector.currentBattle[6]=menu;        
+                    DataCollector.currentBattle[8]=menu;        
                 }
                 else{
                     System.err.println("OPCION INVALIDA");
@@ -176,12 +178,14 @@ while(runTime){
             System.out.print("\n Segundo Pokemon: ");
             menu=S.next();
                 if(Tools.validaNum(menu,1,6)){
-                    DataCollector.currentBattle[8]=menu;        
+                    DataCollector.currentBattle[11]=menu;        
                 }
                 else{
                     System.err.println("OPCION INVALIDA");
                     break;
                 }
+                
+                
         //Se clasifican los datos para mandarlos a la funcion de Battle
         //Las variables pok(n) son destiandas par ala funcion Battle
                 
@@ -191,113 +195,161 @@ while(runTime){
         Pokemon pok4=null;
         
         //pok(n) es igual al un objeto pokemon segun la decision del usuario.
-        //En cada casa se le dara un objeto clonado para preservar los onjetos Pokemon originales
+        //En cada casa se le dara un objeto clonado para preservar los objetos Pokemon originales
         switch(DataCollector.currentBattle[1]){
             case "1":
             pok1=Torchic.clone();
+            Torchic.counter++;
             Tools.writeMatrix(torchicIco,3,34,31,69);
+            DataCollector.currentBattle[1]=Torchic.Name;
             break;
             case "2":
             pok1=Mudkip.clone();
+            Mudkip.counter++;
             Tools.writeMatrix(mudkipIco,3,23,31,69);
+            DataCollector.currentBattle[1]=Mudkip.Name;
             break;
             case "3":
             pok1=Treecko.clone();
+            Treecko.counter++;
             Tools.writeMatrix(treeckoIco,3,23,31,69);
+            DataCollector.currentBattle[1]=Treecko.Name;
             break;
             case "4":
             pok1=Charmander.clone();
+            Charmander.counter++;
             Tools.writeMatrix(charmanderIco,3,25,31,69);
+            DataCollector.currentBattle[1]=Charmander.Name;
             break;
             case "5":
             pok1=Squirtle.clone();
+            Squirtle.counter++;
             Tools.writeMatrix(squirtleIco,3,23,31,69);
+            DataCollector.currentBattle[1]=Squirtle.Name;
             break;
             case "6":
             pok1=Bulbasaur.clone();
+            Bulbasaur.counter++;
             Tools.writeMatrix(bulbasaurIco,3,21,31,69);
+            DataCollector.currentBattle[1]=Bulbasaur.Name;
         }
-        switch(DataCollector.currentBattle[3]){
+        switch(DataCollector.currentBattle[4]){
             case "1":
             pok2=Torchic.clone();
+            Torchic.counter++;
             Tools.writeMatrix(torchicIco,3,34,81,119);
+            DataCollector.currentBattle[4]=Torchic.Name;
             break;
             case "2":
             pok2=Mudkip.clone();
+            Mudkip.counter++;
             Tools.writeMatrix(mudkipIco,3,23,81,119);
+            DataCollector.currentBattle[4]=Mudkip.Name;
             break;
             case "3":
             pok2=Treecko.clone();
+            Treecko.counter++;
             Tools.writeMatrix(treeckoIco,3,23,81,119);
+            DataCollector.currentBattle[4]=Treecko.Name;
             break;
             case "4":
             pok2=Charmander.clone();
+            Charmander.counter++;
             Tools.writeMatrix(charmanderIco,3,25,81,119);
+            DataCollector.currentBattle[4]=Charmander.Name;
             break;
             case "5":
             pok2=Squirtle.clone();
+            Squirtle.counter++;
             Tools.writeMatrix(squirtleIco,3,23,81,119);
+            DataCollector.currentBattle[4]=Squirtle.Name;
             break;
             case "6":
             pok2=Bulbasaur.clone();
+            Bulbasaur.counter++;
             Tools.writeMatrix(bulbasaurIco,3,21,81,119);
-        }
-        switch(DataCollector.currentBattle[6]){
-            case "1":
-            pok3=Torchic.clone();
-            Tools.writeMatrix(torchicIco,43,74,31,69);
-            break;
-            case "2":
-            pok3=Mudkip.clone();
-            Tools.writeMatrix(mudkipIco,43,63,31,69);
-            break;
-            case "3":
-            pok3=Treecko.clone();
-            Tools.writeMatrix(treeckoIco,43,63,31,69);
-            break;
-            case "4":
-            pok3=Charmander.clone();
-            Tools.writeMatrix(charmanderIco,43,65,31,69);
-            break;
-            case "5":
-            pok3=Squirtle.clone();
-            Tools.writeMatrix(squirtleIco,43,63,31,69);
-            break;
-            case "6":
-            pok3=Bulbasaur.clone();
-            Tools.writeMatrix(bulbasaurIco,43,61,31,69);
+            DataCollector.currentBattle[4]=Bulbasaur.Name;
         }
         switch(DataCollector.currentBattle[8]){
             case "1":
+            pok3=Torchic.clone();
+            Torchic.counter++;
+            Tools.writeMatrix(torchicIco,43,74,31,69);
+            DataCollector.currentBattle[8]=Torchic.Name;
+            break;
+            case "2":
+            pok3=Mudkip.clone();
+            Mudkip.counter++;
+            Tools.writeMatrix(mudkipIco,43,63,31,69);
+            DataCollector.currentBattle[8]=Mudkip.Name;
+            break;
+            case "3":
+            pok3=Treecko.clone();
+            Treecko.counter++;
+            Tools.writeMatrix(treeckoIco,43,63,31,69);
+            DataCollector.currentBattle[8]=Treecko.Name;
+            break;
+            case "4":
+            pok3=Charmander.clone();
+            Charmander.counter++;
+            Tools.writeMatrix(charmanderIco,43,65,31,69);
+            DataCollector.currentBattle[6]=Charmander.Name;
+            break;
+            case "5":
+            pok3=Squirtle.clone();
+            Squirtle.counter++;
+            Tools.writeMatrix(squirtleIco,43,63,31,69);
+            DataCollector.currentBattle[8]=Squirtle.Name;
+            break;
+            case "6":
+            pok3=Bulbasaur.clone();
+            Bulbasaur.counter++;
+            Tools.writeMatrix(bulbasaurIco,43,61,31,69);
+            DataCollector.currentBattle[8]=Bulbasaur.Name;
+        }
+        switch(DataCollector.currentBattle[11]){
+            case "1":
             pok4=Torchic.clone();
+            Torchic.counter++;
             Tools.writeMatrix(torchicIco,43,74,81,119);
+            DataCollector.currentBattle[11]=Torchic.Name;
             break;
             case "2":
             pok4=Mudkip.clone();
+            Mudkip.counter++;
             Tools.writeMatrix(mudkipIco,43,63,841,119);
+            DataCollector.currentBattle[11]=Mudkip.Name;
             break;
             case "3":
             pok4=Treecko.clone();
+            Treecko.counter++;
             Tools.writeMatrix(treeckoIco,43,63,81,119);
+            DataCollector.currentBattle[11]=Treecko.Name;
             break;
             case "4":
             pok4=Charmander.clone();
+            Charmander.counter++;
             Tools.writeMatrix(charmanderIco,43,65,81,119);
+            DataCollector.currentBattle[11]=Charmander.Name;
             break;
             case "5":
             pok4=Squirtle.clone();
+            Squirtle.counter++;
             Tools.writeMatrix(squirtleIco,43,63,81,119);
+            DataCollector.currentBattle[11]=Squirtle.Name;
             break;
             case "6":
             pok4=Bulbasaur.clone();
+            Bulbasaur.counter++;
             Tools.writeMatrix(bulbasaurIco,43,61,81,119);
+            DataCollector.currentBattle[11]=Bulbasaur.Name;
         }
         
         Tools.writeMatrix("JUGADOR 1: "+DataCollector.currentBattle[0],1,2,70,DataCollector.currentBattle[0].length()+80);
-        Tools.writeMatrix("JUGADOR 2: "+DataCollector.currentBattle[5],39,40,70,DataCollector.currentBattle[5].length()+80);
-        //Tools.printMatrix(0,74,0,159);
+        Tools.writeMatrix("JUGADOR 2: "+DataCollector.currentBattle[7],39,40,70,DataCollector.currentBattle[7].length()+80);
         //SE MANDAN DATOS A LA FUNCION BATTLE
-        Launcher.Battle(DataCollector.currentBattle, pok1, pok2, pok3, pok4); 
+        Launcher.Battle(DataCollector.currentBattle, pok1, pok2, pok3, pok4);
+        DataCollector.recordData(DataCollector.currentBattle);        
         
             break;        
     case 5:
@@ -318,12 +370,12 @@ while(runTime){
     
     
 // Lista el pokemon recibido    
-public static void listPokemon(Pokemon arg1,int lineas){
+public static void listPokemon(Pokemon objPok,int lineas){
     
-    Tools.writeMatrix(arg1.Icon,3,lineas+3,31,69);
-    Tools.writeMatrix("NOMBRE: "+arg1.Name,10,11,6,13+arg1.Name.length());
-    Tools.writeMatrix("ATAQUE: "+Integer.toString(arg1.Attack),11,12,6,13+Integer.toString(arg1.Attack).length());
-    Tools.writeMatrix("VIDA: "+Integer.toString(arg1.Life),12,13,6,11+Integer.toString(arg1.Life).length());
+    Tools.writeMatrix(objPok.Icon,3,lineas+3,31,69);
+    Tools.writeMatrix("NOMBRE: "+objPok.Name,10,11,6,13+objPok.Name.length());
+    Tools.writeMatrix("ATAQUE: "+Integer.toString(objPok.Attack),11,12,6,13+Integer.toString(objPok.Attack).length());
+    Tools.writeMatrix("VIDA: "+Integer.toString(objPok.Life),12,13,6,11+Integer.toString(objPok.Life).length());
     Tools.printMatrix(0,35,0,159);
     Tools.clearMatrix(0,74,0,159);
 
@@ -383,10 +435,20 @@ public static String[] Battle(String [] BattleMatrix, Pokemon pok1,Pokemon pok2,
     //SE IMPRIME MATRIZ Y STATS
     Launcher.writeStats(pok1, pok2, pok3, pok4);
     Tools.printMatrix(0,74,0,159);
+    int moves1=0;
+    int moves2=0;
+    int moves3=0;
+    int moves4=0;
     
+    int received1=0;
+    int received2=0;
+    int received3=0;
+    int received4=0;
+
     while(control){
         
         // SI EL TURNO ES DEL JUGADOR 1
+        
         if(turno==1){
         System.err.println("ES EL TURNO DE: "+BattleMatrix[0]);
         System.out.println("¿CON QUE POKEMON DESEAS ATACAR?");
@@ -406,8 +468,10 @@ public static String[] Battle(String [] BattleMatrix, Pokemon pok1,Pokemon pok2,
         
             if( (Tools.validaNum(Integer.toString(from),1,2)) && (Tools.validaNum(Integer.toString(to),1,2))){
                 //Se aumenta el contador de numeros de ataques realizados por el pokemon
-                BattleMatrix[2]=(from==1)?BattleMatrix[2]+1:BattleMatrix[2];
-                BattleMatrix[4]=(from==2)?BattleMatrix[4]+1:BattleMatrix[4];
+                moves1=(from==1)?moves1+1:moves1;
+                moves2=(from==2)?moves2+1:moves2;
+                received3=(to==1)?received3+1:received3;
+                received4=(to==2)?received4+1:received4;
                 
                 //Se realiza las resta a la vida del pokemon segun las decisiones tomadas
                 pok3.Life=(from==1&&to==1&&pok1.Life>0)?pok3.Life-pok1.Attack:pok3.Life;
@@ -426,7 +490,7 @@ public static String[] Battle(String [] BattleMatrix, Pokemon pok1,Pokemon pok2,
         
         // SI EL TURNO ES DEL JUGADOR 2
         else{
-        System.err.println("ES EL TURNO DE: "+BattleMatrix[5]);
+        System.err.println("ES EL TURNO DE: "+BattleMatrix[7]);
         System.out.println("¿CON QUE POKEMON DESEAS ATACAR?");
         System.out.println(
             "----------------POKEMONES-------------\n"+
@@ -444,8 +508,10 @@ public static String[] Battle(String [] BattleMatrix, Pokemon pok1,Pokemon pok2,
         
             if((Tools.validaNum(Integer.toString(from),1,2)) && (Tools.validaNum(Integer.toString(to),1,2))){
                 //Se aumenta el contador de numeros de ataques realizados por el pokemon
-                BattleMatrix[6]=(from==1)?BattleMatrix[6]+1:BattleMatrix[6];
-                BattleMatrix[8]=(from==2)?BattleMatrix[8]+1:BattleMatrix[8];
+                moves3=(from==1)?moves3+1:moves3;
+                moves4=(from==2)?moves4+1:moves4;
+                received1=(to==1)?received1+1:received1;
+                received2=(to==2)?received2+1:received2;
                 
                 //Se realiza las resta a la vida del pokemon segun las decisiones tomadas
                 pok1.Life=(from==1&&to==1&&pok3.Life>0)?pok1.Life-pok3.Attack:pok1.Life;
@@ -464,52 +530,50 @@ public static String[] Battle(String [] BattleMatrix, Pokemon pok1,Pokemon pok2,
         
         //SE VERFICA SI ALGUN POKEMON YA HA MUERTO Y YA NO PUEDE UTILIZARSE
         if(pok1.Life<0){
-           pok1.Life=0; 
-           System.out.println("YA NO PUEDES UTILIZAR A "+pok1.Name+" ha muerto");  
+           pok1.Life=0;
+           pok1.State="Muerto";
+           System.err.println(BattleMatrix[0]+" YA NO PUEDE UTILIZAR A "+pok1.Name+"HA MUERTO");  
         }
         if(pok2.Life<0){
-           pok2.Life=0; 
-           System.out.println("YA NO PUEDES UTILIZAR A "+pok2.Name+" ha muerto");  
+           pok2.Life=0;
+           pok2.State="Muerto";
+           System.err.println(BattleMatrix[0]+" YA NO PUEDES UTILIZAR A "+pok2.Name+" HA MUERTO");  
         }
         if(pok3.Life<0){
-           pok3.Life=0; 
-           System.out.println("YA NO PUEDES UTILIZAR A "+pok3.Name+" ha muerto");  
+           pok3.Life=0;
+           pok3.State="Muerto";
+           System.err.println(BattleMatrix[7]+" YA NO PUEDES UTILIZAR A "+pok3.Name+" HA MUERTO");  
         }
         if(pok4.Life<0){
-           pok4.Life=0; 
-           System.out.println("YA NO PUEDES UTILIZAR A "+pok4.Name+" ha muerto");  
+           pok4.Life=0;
+           pok4.State="Muerto";
+           System.err.println(BattleMatrix[7]+" YA NO PUEDES UTILIZAR A "+pok4.Name+" HA MUERTO");  
         }
                 
         //SE VERIFICA SI HAY UN GANADOR
         if(pok1.Life<=0 && pok2.Life<=0){
-        System.out.println("EL GANADOR ES "+BattleMatrix[5]);
-        BattleMatrix[10]=BattleMatrix[5];
+        System.err.println("EL GANADOR ES "+BattleMatrix[7]);
+        BattleMatrix[14]=BattleMatrix[7];
         control=false;    
         }
         if(pok3.Life<=0 && pok4.Life<=0){
-        System.out.println("EL GANADOR ES "+BattleMatrix[0]);
-        BattleMatrix[10]=BattleMatrix[0];
+        System.err.println("EL GANADOR ES "+BattleMatrix[0]);
+        BattleMatrix[14]=BattleMatrix[0];
         control=false;
         }
+        //SE ESTABLECEN EN LA MATRIZ LA CANTIDAD DE MOVIMIENTOS DADOS Y RECIBIDOS
+        BattleMatrix[2]=Integer.toString(moves1);
+        BattleMatrix[5]=Integer.toString(moves2);
+        BattleMatrix[9]=Integer.toString(moves3);
+        BattleMatrix[12]=Integer.toString(moves4);
+        
+        BattleMatrix[3]=Integer.toString(received1);
+        BattleMatrix[6]=Integer.toString(received2);
+        BattleMatrix[10]=Integer.toString(received3);
+        BattleMatrix[13]=Integer.toString(received4);
     }
     
     return BattleMatrix;
-}
-
-public static void showPokemon(int pok1,int pok2,int pok3,int pok4){
-    
-    for(int i=1;i<=4;i++){
-    switch(i){
-        case 1:
-        break;
-        case 2:
-        break;
-        case 3:
-        break;
-        case 4:
-        break;
-    }
-    }
 }
 
 public static void writeStats(Pokemon pok1,Pokemon pok2,Pokemon pok3,Pokemon pok4){
@@ -517,18 +581,28 @@ public static void writeStats(Pokemon pok1,Pokemon pok2,Pokemon pok3,Pokemon pok
     Tools.writeMatrix("NOMBRE: "+pok1.Name,10,11,6,13+pok1.Name.length());
     Tools.writeMatrix("ATAQUE: "+Integer.toString(pok1.Attack),11,12,6,13+Integer.toString(pok1.Attack).length());
     Tools.writeMatrix("VIDA: "+Integer.toString(pok1.Life),12,13,6,11+Integer.toString(pok1.Life).length());
+    Tools.writeMatrix("ESTADO: "+pok1.State,13,14,6,13+pok1.State.length());
     
     Tools.writeMatrix("NOMBRE: "+pok2.Name,10,11,130,137+pok2.Name.length());
     Tools.writeMatrix("ATAQUE: "+Integer.toString(pok2.Attack),11,12,130,137+Integer.toString(pok2.Attack).length());
     Tools.writeMatrix("VIDA: "+Integer.toString(pok2.Life),12,13,130,135+Integer.toString(pok2.Life).length());
+    Tools.writeMatrix("ESTADO: "+pok2.State,13,14,6,137+pok2.State.length());
     
     Tools.writeMatrix("NOMBRE: "+pok3.Name,50,51,6,13+pok3.Name.length());
     Tools.writeMatrix("ATAQUE: "+Integer.toString(pok3.Attack),51,52,6,13+Integer.toString(pok3.Attack).length());
     Tools.writeMatrix("VIDA: "+Integer.toString(pok3.Life),52,53,6,11+Integer.toString(pok3.Life).length());
+    Tools.writeMatrix("ESTADO: "+pok2.State,53,54,6,13+pok2.State.length());
     
     Tools.writeMatrix("NOMBRE: "+pok4.Name,50,51,130,137+pok4.Name.length());
     Tools.writeMatrix("ATAQUE: "+Integer.toString(pok4.Attack),51,52,130,137+Integer.toString(pok4.Attack).length());
     Tools.writeMatrix("VIDA: "+Integer.toString(pok4.Life),52,53,130,135+Integer.toString(pok4.Life).length());
+    Tools.writeMatrix("ESTADO: "+pok2.State,53,54,6,137+pok2.State.length());
+    
+}
+
+public static void mostUsed(Pokemon pok1,Pokemon pok2,Pokemon pok3,Pokemon pok4){
+    
+    String popularPokemon;  
     
 }
     
