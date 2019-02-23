@@ -11,7 +11,7 @@ public class Data {
 
 public int counter=0;    
 public String currentBattle[] = new String[15];
-public String HistoryData[][] = new String[500][11];
+public String HistoryData[][] = new String[500][15];
  
 public void recordData(String [] toRecord){
  

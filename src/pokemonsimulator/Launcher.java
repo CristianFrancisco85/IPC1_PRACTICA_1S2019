@@ -353,8 +353,10 @@ while(runTime){
         
             break;        
     case 5:
+        Launcher.mostUsed(Torchic, Mudkip, Treecko, Charmander, Squirtle, Bulbasaur);
             break;
     case 6:
+        Launcher.mostUnused(Torchic, Mudkip, Treecko, Charmander, Squirtle, Bulbasaur);
             break;
     case 7:
             runTime=false;
@@ -464,7 +466,13 @@ public static String[] Battle(String [] BattleMatrix, Pokemon pok1,Pokemon pok2,
             "| [1] "+pok3.Name+"                   |\n"+
             "| [2] "+pok4.Name+"                   |\n"+
             "---------------------------------------");
-        to=S.nextInt();
+        try{
+            to=S.nextInt();
+        }
+        catch(Exception e){
+            to=-1;
+        }
+        
         
             if( (Tools.validaNum(Integer.toString(from),1,2)) && (Tools.validaNum(Integer.toString(to),1,2))){
                 //Se aumenta el contador de numeros de ataques realizados por el pokemon
@@ -482,6 +490,7 @@ public static String[] Battle(String [] BattleMatrix, Pokemon pok1,Pokemon pok2,
                 Launcher.writeStats(pok1, pok2, pok3, pok4);
                 Tools.printMatrix(0,74,0,159);
             }
+            
             else{
                 System.err.println("OPCIONES NO VALIDAS");
             }
@@ -504,7 +513,12 @@ public static String[] Battle(String [] BattleMatrix, Pokemon pok1,Pokemon pok2,
             "| [1] "+pok1.Name+"                   |\n"+
             "| [2] "+pok2.Name+"                   |\n"+
             "---------------------------------------");
-        to=S.nextInt();
+        try{
+            to=S.nextInt();
+        }
+        catch(Exception e){
+            to=-1;
+        }
         
             if((Tools.validaNum(Integer.toString(from),1,2)) && (Tools.validaNum(Integer.toString(to),1,2))){
                 //Se aumenta el contador de numeros de ataques realizados por el pokemon
@@ -586,26 +600,169 @@ public static void writeStats(Pokemon pok1,Pokemon pok2,Pokemon pok3,Pokemon pok
     Tools.writeMatrix("NOMBRE: "+pok2.Name,10,11,130,137+pok2.Name.length());
     Tools.writeMatrix("ATAQUE: "+Integer.toString(pok2.Attack),11,12,130,137+Integer.toString(pok2.Attack).length());
     Tools.writeMatrix("VIDA: "+Integer.toString(pok2.Life),12,13,130,135+Integer.toString(pok2.Life).length());
-    Tools.writeMatrix("ESTADO: "+pok2.State,13,14,6,137+pok2.State.length());
+    Tools.writeMatrix("ESTADO: "+pok2.State,13,14,130,137+pok2.State.length());
     
     Tools.writeMatrix("NOMBRE: "+pok3.Name,50,51,6,13+pok3.Name.length());
     Tools.writeMatrix("ATAQUE: "+Integer.toString(pok3.Attack),51,52,6,13+Integer.toString(pok3.Attack).length());
     Tools.writeMatrix("VIDA: "+Integer.toString(pok3.Life),52,53,6,11+Integer.toString(pok3.Life).length());
-    Tools.writeMatrix("ESTADO: "+pok2.State,53,54,6,13+pok2.State.length());
+    Tools.writeMatrix("ESTADO: "+pok3.State,53,54,6,13+pok3.State.length());
     
     Tools.writeMatrix("NOMBRE: "+pok4.Name,50,51,130,137+pok4.Name.length());
     Tools.writeMatrix("ATAQUE: "+Integer.toString(pok4.Attack),51,52,130,137+Integer.toString(pok4.Attack).length());
     Tools.writeMatrix("VIDA: "+Integer.toString(pok4.Life),52,53,130,135+Integer.toString(pok4.Life).length());
-    Tools.writeMatrix("ESTADO: "+pok2.State,53,54,6,137+pok2.State.length());
+    Tools.writeMatrix("ESTADO: "+pok4.State,53,54,130,137+pok4.State.length());
     
 }
 
-public static void mostUsed(Pokemon pok1,Pokemon pok2,Pokemon pok3,Pokemon pok4){
+public static void mostUsed(Pokemon pok1,Pokemon pok2,Pokemon pok3,Pokemon pok4,Pokemon pok5,Pokemon pok6){
     
-    String popularPokemon;  
+    //SE INTRODUCEN LOS "COUNTERS" DE CADA POKEMON Y ABAJO DE ESE DATO EL NUMERO DE POKEMON
+    int [][] popularsPokemons= new int [2][6];
     
+    popularsPokemons[0][0]=pok1.counter;
+    popularsPokemons[1][0]=1;
+    
+    popularsPokemons[0][1]=pok2.counter;
+    popularsPokemons[1][1]=2;
+    
+    popularsPokemons[0][2]=pok3.counter;
+    popularsPokemons[1][2]=3;
+    
+    popularsPokemons[0][3]=pok4.counter;
+    popularsPokemons[1][3]=4;
+    
+    popularsPokemons[0][4]=pok5.counter;
+    popularsPokemons[1][4]=5;
+    
+    popularsPokemons[0][5]=pok6.counter;
+    popularsPokemons[1][5]=6;
+    
+    Tools.burbujaDesc(popularsPokemons);
+    
+    for(int i=0; i<popularsPokemons[0].length;i++){
+        
+       switch(popularsPokemons[1][i]){
+           case 1:
+           Tools.writeMatrix("USADO: "+popularsPokemons[0][0]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][0]).length());
+           Launcher.listPokemon(pok1,31);
+           break;
+           case 2:
+           Tools.writeMatrix("USADO: "+popularsPokemons[0][1]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][1]).length());
+           Launcher.listPokemon(pok2,20);
+           break;
+           case 3:
+           Tools.writeMatrix("USADO: "+popularsPokemons[0][2]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][2]).length());
+           Launcher.listPokemon(pok3,20);
+           break;
+           case 4:
+           Tools.writeMatrix("USADO: "+popularsPokemons[0][3]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][3]).length());
+           Launcher.listPokemon(pok4,22);
+           break;
+           case 5:
+           Tools.writeMatrix("USADO: "+popularsPokemons[0][4]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][4]).length());
+           Launcher.listPokemon(pok5,20);
+           break;
+           case 6:
+           Tools.writeMatrix("USADO: "+popularsPokemons[0][5]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][5]).length());
+           Launcher.listPokemon(pok6,18);
+           break;
+           
+       } 
+       
+    }
+       
 }
+
+public static void mostUnused(Pokemon pok1,Pokemon pok2,Pokemon pok3,Pokemon pok4,Pokemon pok5,Pokemon pok6){
     
+    //SE INTRODUCEN LOS "COUNTERS" DE CADA POKEMON Y ABAJO DE ESE DATO EL NUMERO DE POKEMON
+    int [][] popularsPokemons= new int [2][6];
+    
+    popularsPokemons[0][0]=pok1.counter;
+    popularsPokemons[1][0]=1;
+    
+    popularsPokemons[0][1]=pok2.counter;
+    popularsPokemons[1][1]=2;
+    
+    popularsPokemons[0][2]=pok3.counter;
+    popularsPokemons[1][2]=3;
+    
+    popularsPokemons[0][3]=pok4.counter;
+    popularsPokemons[1][3]=4;
+    
+    popularsPokemons[0][4]=pok5.counter;
+    popularsPokemons[1][4]=5;
+    
+    popularsPokemons[0][5]=pok6.counter;
+    popularsPokemons[1][5]=6;
+    
+    Tools.burbujaAsc(popularsPokemons);
+    
+    for(int i=0; i<popularsPokemons[0].length;i++){
+        
+       switch(popularsPokemons[1][i]){
+           case 1:
+           Tools.writeMatrix("USADO: "+popularsPokemons[0][0]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][0]).length());
+           Launcher.listPokemon(pok1,31);
+           break;
+           case 2:
+           Tools.writeMatrix("USADO: "+popularsPokemons[0][1]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][1]).length());
+           Launcher.listPokemon(pok2,20);
+           break;
+           case 3:
+           Tools.writeMatrix("USADO: "+popularsPokemons[0][2]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][2]).length());
+           Launcher.listPokemon(pok3,20);
+           break;
+           case 4:
+           Tools.writeMatrix("USADO: "+popularsPokemons[0][3]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][3]).length());
+           Launcher.listPokemon(pok4,22);
+           break;
+           case 5:
+           Tools.writeMatrix("USADO: "+popularsPokemons[0][4]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][4]).length());
+           Launcher.listPokemon(pok5,20);
+           break;
+           case 6:
+           Tools.writeMatrix("USADO: "+popularsPokemons[0][5]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][5]).length());
+           Launcher.listPokemon(pok6,18);
+           break;
+           
+       } 
+       
+    }
+       
+}
+
+public static void prueba(){
+    int matrixP[][]= new int[2][6];
+    
+    matrixP[0][0]=4;
+    matrixP[1][0]=1;
+    
+    matrixP[0][1]=5;
+    matrixP[1][1]=2;
+    
+    matrixP[0][2]=1;
+    matrixP[1][2]=3;
+    
+    matrixP[0][3]=6;
+    matrixP[1][3]=4;
+    
+    matrixP[0][4]=2;
+    matrixP[1][4]=5;
+    
+    matrixP[0][5]=1;
+    matrixP[1][5]=6;
+    
+    Tools.burbujaAsc(matrixP);
+    
+    for(int i=0;i<matrixP.length;i++){
+        
+        for(int j=0;j<matrixP[0].length;j++){
+            System.out.print(matrixP[i][j]);
+        }
+        System.out.println("");
+    }
+}
  
 
 //ICONOS DE POKEMONES EN FORMATO STRING

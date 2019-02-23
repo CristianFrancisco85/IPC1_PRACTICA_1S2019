@@ -70,7 +70,60 @@ public abstract class Tools {
     }
         
     }       
+    
+    public static void burbujaDesc(int[][] matrix){
         
+        int temp,temp2;
+        
+        for(int i=0;i<matrix[0].length-1;i++){
+            
+            for(int j=0;j<matrix[0].length-1;j++){
+               if(matrix[0][j]<matrix[0][j+1]){ 
+                   
+                temp=matrix[0][j];
+                temp2=matrix[1][j];
+                
+                matrix[0][j]=matrix[0][j+1];
+                matrix[1][j]=matrix[1][j+1];
+                
+                matrix[0][j+1]=temp;
+                matrix[1][j+1]=temp2;              
+                   
+               } 
+            }
+                       
+        }
+        
+    }
+    
+    public static void burbujaAsc(int[][] matrix){
+        
+        int temp,temp2;
+        
+        for(int i=0;i<matrix[0].length-1;i++){
+            
+            for(int j=0;j<matrix[0].length-1;j++){
+               if(matrix[0][j]>matrix[0][j+1]){ 
+                   
+                temp=matrix[0][j];
+                temp2=matrix[1][j];
+                
+                matrix[0][j]=matrix[0][j+1];
+                matrix[1][j]=matrix[1][j+1];
+                
+                matrix[0][j+1]=temp;
+                matrix[1][j+1]=temp2;              
+                   
+               } 
+            }
+                       
+        }
+        
+    }
+    
+    
+    
+    
         
     /**
      * Metodo que imprime la matriz completa
