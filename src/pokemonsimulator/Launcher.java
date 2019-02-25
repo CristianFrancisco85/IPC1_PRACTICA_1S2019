@@ -353,12 +353,14 @@ while(runTime){
         
             break;        
     case 5:
+        Launcher.prueba();
         Launcher.mostUsed(Torchic, Mudkip, Treecko, Charmander, Squirtle, Bulbasaur);
             break;
     case 6:
         Launcher.mostUnused(Torchic, Mudkip, Treecko, Charmander, Squirtle, Bulbasaur);
             break;
     case 7:
+        System.err.println("GRACIAS POR JUGAR");
             runTime=false;
             break;
     default:
@@ -370,7 +372,7 @@ while(runTime){
              
 }
     
-    
+
 // Lista el pokemon recibido    
 public static void listPokemon(Pokemon objPok,int lineas){
     
@@ -452,7 +454,7 @@ public static String[] Battle(String [] BattleMatrix, Pokemon pok1,Pokemon pok2,
         // SI EL TURNO ES DEL JUGADOR 1
         
         if(turno==1){
-        System.err.println("ES EL TURNO DE: "+BattleMatrix[0]);
+        System.out.println("ES EL TURNO DE: "+BattleMatrix[0]);
         System.out.println("¿CON QUE POKEMON DESEAS ATACAR?");
         System.out.println(
             "----------------POKEMONES-------------\n"+
@@ -492,14 +494,14 @@ public static String[] Battle(String [] BattleMatrix, Pokemon pok1,Pokemon pok2,
             }
             
             else{
-                System.err.println("OPCIONES NO VALIDAS");
+                System.out.println("OPCIONES NO VALIDAS");
             }
             
         }
         
         // SI EL TURNO ES DEL JUGADOR 2
         else{
-        System.err.println("ES EL TURNO DE: "+BattleMatrix[7]);
+        System.out.println("ES EL TURNO DE: "+BattleMatrix[7]);
         System.out.println("¿CON QUE POKEMON DESEAS ATACAR?");
         System.out.println(
             "----------------POKEMONES-------------\n"+
@@ -537,7 +539,7 @@ public static String[] Battle(String [] BattleMatrix, Pokemon pok1,Pokemon pok2,
                 Tools.printMatrix(0,74,0,159);
             }
             else{
-                System.err.println("OPCIONES NO VALIDAS");
+                System.out.println("OPCIONES NO VALIDAS");
             }
             
         }
@@ -546,32 +548,37 @@ public static String[] Battle(String [] BattleMatrix, Pokemon pok1,Pokemon pok2,
         if(pok1.Life<0){
            pok1.Life=0;
            pok1.State="Muerto";
-           System.err.println(BattleMatrix[0]+" YA NO PUEDE UTILIZAR A "+pok1.Name+"HA MUERTO");  
+           Launcher.writeStats(pok1, pok2, pok3, pok4);
+           System.out.println(BattleMatrix[0]+" YA NO PUEDE UTILIZAR A "+pok1.Name+" HA MUERTO");  
         }
         if(pok2.Life<0){
            pok2.Life=0;
            pok2.State="Muerto";
-           System.err.println(BattleMatrix[0]+" YA NO PUEDES UTILIZAR A "+pok2.Name+" HA MUERTO");  
+           Launcher.writeStats(pok1, pok2, pok3, pok4);
+           System.out.println(BattleMatrix[0]+" YA NO PUEDES UTILIZAR A "+pok2.Name+" HA MUERTO");  
         }
         if(pok3.Life<0){
            pok3.Life=0;
            pok3.State="Muerto";
-           System.err.println(BattleMatrix[7]+" YA NO PUEDES UTILIZAR A "+pok3.Name+" HA MUERTO");  
+           Launcher.writeStats(pok1, pok2, pok3, pok4);
+           System.out.println(BattleMatrix[7]+" YA NO PUEDES UTILIZAR A "+pok3.Name+" HA MUERTO");  
         }
         if(pok4.Life<0){
            pok4.Life=0;
            pok4.State="Muerto";
-           System.err.println(BattleMatrix[7]+" YA NO PUEDES UTILIZAR A "+pok4.Name+" HA MUERTO");  
+           Launcher.writeStats(pok1, pok2, pok3, pok4);
+           System.out.println(BattleMatrix[7]+" YA NO PUEDES UTILIZAR A "+pok4.Name+" HA MUERTO");  
         }
+        
                 
         //SE VERIFICA SI HAY UN GANADOR
         if(pok1.Life<=0 && pok2.Life<=0){
-        System.err.println("EL GANADOR ES "+BattleMatrix[7]);
+        System.out.println("EL GANADOR ES "+BattleMatrix[7]);
         BattleMatrix[14]=BattleMatrix[7];
         control=false;    
         }
         if(pok3.Life<=0 && pok4.Life<=0){
-        System.err.println("EL GANADOR ES "+BattleMatrix[0]);
+        System.out.println("EL GANADOR ES "+BattleMatrix[0]);
         BattleMatrix[14]=BattleMatrix[0];
         control=false;
         }
@@ -591,6 +598,11 @@ public static String[] Battle(String [] BattleMatrix, Pokemon pok1,Pokemon pok2,
 }
 
 public static void writeStats(Pokemon pok1,Pokemon pok2,Pokemon pok3,Pokemon pok4){
+    
+    Tools.clearMatrix(12,13,6,16);
+    Tools.clearMatrix(12,13,130,140);
+    Tools.clearMatrix(52,53,6,16);
+    Tools.clearMatrix(52,53,130,140);
    
     Tools.writeMatrix("NOMBRE: "+pok1.Name,10,11,6,13+pok1.Name.length());
     Tools.writeMatrix("ATAQUE: "+Integer.toString(pok1.Attack),11,12,6,13+Integer.toString(pok1.Attack).length());
@@ -637,33 +649,33 @@ public static void mostUsed(Pokemon pok1,Pokemon pok2,Pokemon pok3,Pokemon pok4,
     popularsPokemons[0][5]=pok6.counter;
     popularsPokemons[1][5]=6;
     
-    Tools.burbujaDesc(popularsPokemons);
+    popularsPokemons=Tools.burbujaDesc(popularsPokemons);
     
     for(int i=0; i<popularsPokemons[0].length;i++){
         
        switch(popularsPokemons[1][i]){
            case 1:
-           Tools.writeMatrix("USADO: "+popularsPokemons[0][0]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][0]).length());
+           Tools.writeMatrix("USADO: "+popularsPokemons[0][i]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][i]).length());
            Launcher.listPokemon(pok1,31);
            break;
            case 2:
-           Tools.writeMatrix("USADO: "+popularsPokemons[0][1]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][1]).length());
+           Tools.writeMatrix("USADO: "+popularsPokemons[0][i]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][i]).length());
            Launcher.listPokemon(pok2,20);
            break;
            case 3:
-           Tools.writeMatrix("USADO: "+popularsPokemons[0][2]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][2]).length());
+           Tools.writeMatrix("USADO: "+popularsPokemons[0][i]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][i]).length());
            Launcher.listPokemon(pok3,20);
            break;
            case 4:
-           Tools.writeMatrix("USADO: "+popularsPokemons[0][3]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][3]).length());
+           Tools.writeMatrix("USADO: "+popularsPokemons[0][i]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][i]).length());
            Launcher.listPokemon(pok4,22);
            break;
            case 5:
-           Tools.writeMatrix("USADO: "+popularsPokemons[0][4]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][4]).length());
+           Tools.writeMatrix("USADO: "+popularsPokemons[0][i]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][i]).length());
            Launcher.listPokemon(pok5,20);
            break;
            case 6:
-           Tools.writeMatrix("USADO: "+popularsPokemons[0][5]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][5]).length());
+           Tools.writeMatrix("USADO: "+popularsPokemons[0][i]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][i]).length());
            Launcher.listPokemon(pok6,18);
            break;
            
@@ -676,53 +688,53 @@ public static void mostUsed(Pokemon pok1,Pokemon pok2,Pokemon pok3,Pokemon pok4,
 public static void mostUnused(Pokemon pok1,Pokemon pok2,Pokemon pok3,Pokemon pok4,Pokemon pok5,Pokemon pok6){
     
     //SE INTRODUCEN LOS "COUNTERS" DE CADA POKEMON Y ABAJO DE ESE DATO EL NUMERO DE POKEMON
-    int [][] popularsPokemons= new int [2][6];
+    int [][] UnpopularsPokemons= new int [2][6];
     
-    popularsPokemons[0][0]=pok1.counter;
-    popularsPokemons[1][0]=1;
+    UnpopularsPokemons[0][0]=pok1.counter;
+    UnpopularsPokemons[1][0]=1;
     
-    popularsPokemons[0][1]=pok2.counter;
-    popularsPokemons[1][1]=2;
+    UnpopularsPokemons[0][1]=pok2.counter;
+    UnpopularsPokemons[1][1]=2;
     
-    popularsPokemons[0][2]=pok3.counter;
-    popularsPokemons[1][2]=3;
+    UnpopularsPokemons[0][2]=pok3.counter;
+    UnpopularsPokemons[1][2]=3;
     
-    popularsPokemons[0][3]=pok4.counter;
-    popularsPokemons[1][3]=4;
+    UnpopularsPokemons[0][3]=pok4.counter;
+    UnpopularsPokemons[1][3]=4;
     
-    popularsPokemons[0][4]=pok5.counter;
-    popularsPokemons[1][4]=5;
+    UnpopularsPokemons[0][4]=pok5.counter;
+    UnpopularsPokemons[1][4]=5;
     
-    popularsPokemons[0][5]=pok6.counter;
-    popularsPokemons[1][5]=6;
+    UnpopularsPokemons[0][5]=pok6.counter;
+    UnpopularsPokemons[1][5]=6;
     
-    Tools.burbujaAsc(popularsPokemons);
+    UnpopularsPokemons=Tools.burbujaAsc(UnpopularsPokemons);
     
-    for(int i=0; i<popularsPokemons[0].length;i++){
+    for(int i=0; i<UnpopularsPokemons[0].length;i++){
         
-       switch(popularsPokemons[1][i]){
+       switch(UnpopularsPokemons[1][i]){
            case 1:
-           Tools.writeMatrix("USADO: "+popularsPokemons[0][0]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][0]).length());
+           Tools.writeMatrix("USADO: "+UnpopularsPokemons[0][i]+" veces",20,21,75,87+Integer.toString(UnpopularsPokemons[0][i]).length());
            Launcher.listPokemon(pok1,31);
            break;
            case 2:
-           Tools.writeMatrix("USADO: "+popularsPokemons[0][1]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][1]).length());
+           Tools.writeMatrix("USADO: "+UnpopularsPokemons[0][i]+" veces",20,21,75,87+Integer.toString(UnpopularsPokemons[0][i]).length());
            Launcher.listPokemon(pok2,20);
            break;
            case 3:
-           Tools.writeMatrix("USADO: "+popularsPokemons[0][2]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][2]).length());
+           Tools.writeMatrix("USADO: "+UnpopularsPokemons[0][i]+" veces",20,21,75,87+Integer.toString(UnpopularsPokemons[0][i]).length());
            Launcher.listPokemon(pok3,20);
            break;
            case 4:
-           Tools.writeMatrix("USADO: "+popularsPokemons[0][3]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][3]).length());
+           Tools.writeMatrix("USADO: "+UnpopularsPokemons[0][i]+" veces",20,21,75,87+Integer.toString(UnpopularsPokemons[0][i]).length());
            Launcher.listPokemon(pok4,22);
            break;
            case 5:
-           Tools.writeMatrix("USADO: "+popularsPokemons[0][4]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][4]).length());
+           Tools.writeMatrix("USADO: "+UnpopularsPokemons[0][i]+" veces",20,21,75,87+Integer.toString(UnpopularsPokemons[0][i]).length());
            Launcher.listPokemon(pok5,20);
            break;
            case 6:
-           Tools.writeMatrix("USADO: "+popularsPokemons[0][5]+" veces",20,21,75,87+Integer.toString(popularsPokemons[0][5]).length());
+           Tools.writeMatrix("USADO: "+UnpopularsPokemons[0][i]+" veces",20,21,75,87+Integer.toString(UnpopularsPokemons[0][i]).length());
            Launcher.listPokemon(pok6,18);
            break;
            
@@ -735,7 +747,7 @@ public static void mostUnused(Pokemon pok1,Pokemon pok2,Pokemon pok3,Pokemon pok
 public static void prueba(){
     int matrixP[][]= new int[2][6];
     
-    matrixP[0][0]=4;
+    matrixP[0][0]=0;
     matrixP[1][0]=1;
     
     matrixP[0][1]=5;
@@ -753,7 +765,7 @@ public static void prueba(){
     matrixP[0][5]=1;
     matrixP[1][5]=6;
     
-    Tools.burbujaAsc(matrixP);
+    matrixP=Tools.burbujaDesc(matrixP);
     
     for(int i=0;i<matrixP.length;i++){
         

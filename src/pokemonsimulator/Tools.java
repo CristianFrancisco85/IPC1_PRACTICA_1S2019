@@ -71,7 +71,7 @@ public abstract class Tools {
         
     }       
     
-    public static void burbujaDesc(int[][] matrix){
+    public static int[][] burbujaDesc(int[][] matrix){
         
         int temp,temp2;
         
@@ -93,10 +93,11 @@ public abstract class Tools {
             }
                        
         }
+        return matrix;
         
     }
     
-    public static void burbujaAsc(int[][] matrix){
+    public static int[][] burbujaAsc(int[][] matrix){
         
         int temp,temp2;
         
@@ -118,6 +119,7 @@ public abstract class Tools {
             }
                        
         }
+        return matrix;
         
     }
     
