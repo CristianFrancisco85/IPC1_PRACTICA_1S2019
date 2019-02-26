@@ -496,6 +496,20 @@ public static String[] Battle(String [] BattleMatrix, Pokemon pok1,Pokemon pok2,
                 pok4.Life=(from==1&&to==2&&pok1.Life>0)?pok4.Life-pok1.Attack:pok4.Life;
                 pok4.Life=(from==2&&to==2&&pok2.Life>0)?pok4.Life-pok2.Attack:pok4.Life;
                 turno=2;
+                
+                //SE VERFICA SI ALGUN POKEMON YA HA MUERTO Y YA NO PUEDE UTILIZARSE
+                if(pok3.Life<0){
+                    pok3.Life=0;
+                    pok3.State="Muerto";
+                    Launcher.writeStats(pok1, pok2, pok3, pok4);
+                    System.out.println(BattleMatrix[7]+" YA NO PUEDES UTILIZAR A "+pok3.Name+" HA MUERTO");  
+                }
+                if(pok4.Life<0){
+                    pok4.Life=0;
+                    pok4.State="Muerto";
+                    Launcher.writeStats(pok1, pok2, pok3, pok4);
+                    System.out.println(BattleMatrix[7]+" YA NO PUEDES UTILIZAR A "+pok4.Name+" HA MUERTO");  
+                }
                 Launcher.writeStats(pok1, pok2, pok3, pok4);
                 Tools.printMatrix(0,74,0,159);
             }
@@ -542,6 +556,21 @@ public static String[] Battle(String [] BattleMatrix, Pokemon pok1,Pokemon pok2,
                 pok2.Life=(from==1&&to==2&&pok3.Life>0)?pok2.Life-pok3.Attack:pok2.Life;
                 pok2.Life=(from==2&&to==2&&pok4.Life>0)?pok2.Life-pok4.Attack:pok2.Life;
                 turno=1;
+                
+                //SE VERFICA SI ALGUN POKEMON YA HA MUERTO Y YA NO PUEDE UTILIZARSE
+                if(pok1.Life<0){
+                    pok1.Life=0;
+                    pok1.State="Muerto";
+                    Launcher.writeStats(pok1, pok2, pok3, pok4);
+                    System.out.println(BattleMatrix[0]+" YA NO PUEDE UTILIZAR A "+pok1.Name+" HA MUERTO");  
+                }
+                if(pok2.Life<0){
+                    pok2.Life=0;
+                    pok2.State="Muerto";
+                    Launcher.writeStats(pok1, pok2, pok3, pok4);
+                    System.out.println(BattleMatrix[0]+" YA NO PUEDES UTILIZAR A "+pok2.Name+" HA MUERTO");  
+                }
+                
                 Launcher.writeStats(pok1, pok2, pok3, pok4);
                 Tools.printMatrix(0,74,0,159);
             }
@@ -549,35 +578,8 @@ public static String[] Battle(String [] BattleMatrix, Pokemon pok1,Pokemon pok2,
                 System.out.println("OPCIONES NO VALIDAS");
             }
             
-        }
-        
-        //SE VERFICA SI ALGUN POKEMON YA HA MUERTO Y YA NO PUEDE UTILIZARSE
-        if(pok1.Life<0){
-           pok1.Life=0;
-           pok1.State="Muerto";
-           Launcher.writeStats(pok1, pok2, pok3, pok4);
-           System.out.println(BattleMatrix[0]+" YA NO PUEDE UTILIZAR A "+pok1.Name+" HA MUERTO");  
-        }
-        if(pok2.Life<0){
-           pok2.Life=0;
-           pok2.State="Muerto";
-           Launcher.writeStats(pok1, pok2, pok3, pok4);
-           System.out.println(BattleMatrix[0]+" YA NO PUEDES UTILIZAR A "+pok2.Name+" HA MUERTO");  
-        }
-        if(pok3.Life<0){
-           pok3.Life=0;
-           pok3.State="Muerto";
-           Launcher.writeStats(pok1, pok2, pok3, pok4);
-           System.out.println(BattleMatrix[7]+" YA NO PUEDES UTILIZAR A "+pok3.Name+" HA MUERTO");  
-        }
-        if(pok4.Life<0){
-           pok4.Life=0;
-           pok4.State="Muerto";
-           Launcher.writeStats(pok1, pok2, pok3, pok4);
-           System.out.println(BattleMatrix[7]+" YA NO PUEDES UTILIZAR A "+pok4.Name+" HA MUERTO");  
-        }
-        
-                
+        }        
+                       
         //SE VERIFICA SI HAY UN GANADOR
         if(pok1.Life<=0 && pok2.Life<=0){
         System.out.println("EL GANADOR ES "+BattleMatrix[7]);
