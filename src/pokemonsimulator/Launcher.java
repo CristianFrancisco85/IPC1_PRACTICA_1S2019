@@ -324,7 +324,7 @@ while(runTime){
             case "2":
             pok4=Mudkip.clone();
             Mudkip.counter++;
-            Tools.writeMatrix(mudkipIco,43,63,841,119);
+            Tools.writeMatrix(mudkipIco,43,63,81,119);
             DataCollector.currentBattle[11]=Mudkip.Name;
             break;
             case "3":
@@ -407,6 +407,8 @@ if(propertie>=1 && propertie<=3){
             
             case 2:
             System.out.println("Ingrese el nuevo valor entre 50-100");
+            newValue=-1;
+            try{
             newValue=S.nextInt();
             if(newValue>=50 && newValue<=100){
                     objPok.Life=newValue;
@@ -416,17 +418,28 @@ if(propertie>=1 && propertie<=3){
                     System.err.println("VALOR NO VALIDO");
                 }
             break;
-            
+            }
+            catch(Exception e){
+            System.err.println("VALOR NO VALIDO");    
+            }
+                  
             case 3:
             System.out.println("Ingrese el nuevo valor entre 5-20");
+            newValue=-1;
+            try{
             newValue=S.nextInt();
-                if(newValue>=5 && newValue<=20){
+            if(newValue>=5 && newValue<=20){
                     objPok.Attack=newValue;
                     System.out.println("CAMBIO GUARDADO");
                 }
                 else{
                     System.err.println("VALOR NO VALIDO");
                 }
+            }
+            catch (Exception e){  
+            System.err.println("VALOR NO VALIDO");
+            }
+                
         }       
 }
 else{
