@@ -467,7 +467,12 @@ public static String[] Battle(String [] BattleMatrix, Pokemon pok1,Pokemon pok2,
             "| [1] "+pok1.Name+"                   |\n"+
             "| [2] "+pok2.Name+"                   |\n"+
             "---------------------------------------");
-        from=S.nextInt();
+        try{
+            from=S.nextInt();
+        }
+        catch(Exception e){
+            from=-1;
+        }
         System.out.println("¿A QUE POKEMON DESEAS ATACAR?");
         System.out.println(
             "----------------POKEMONES-------------\n"+
@@ -528,7 +533,12 @@ public static String[] Battle(String [] BattleMatrix, Pokemon pok1,Pokemon pok2,
             "| [1] "+pok3.Name+"                   |\n"+
             "| [2] "+pok4.Name+"                   |\n"+
             "---------------------------------------");
-        from=S.nextInt();
+        try{
+            from=S.nextInt();
+        }
+        catch(Exception e){
+            from=-1;
+        }
         System.out.println("¿A QUE POKEMON DESEAS ATACAR?");
         System.out.println(
             "----------------POKEMONES-------------\n"+
