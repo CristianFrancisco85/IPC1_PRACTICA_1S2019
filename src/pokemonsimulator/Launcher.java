@@ -360,7 +360,6 @@ while(runTime){
         
             break;        
     case 5:
-        Launcher.prueba();
         Launcher.mostUsed(Torchic, Mudkip, Treecko, Charmander, Squirtle, Bulbasaur);
             break;
     case 6:
@@ -752,39 +751,6 @@ public static void mostUnused(Pokemon pok1,Pokemon pok2,Pokemon pok3,Pokemon pok
     }
        
 }
-
-public static void prueba(){
-    int matrixP[][]= new int[2][6];
-    
-    matrixP[0][0]=0;
-    matrixP[1][0]=1;
-    
-    matrixP[0][1]=5;
-    matrixP[1][1]=2;
-    
-    matrixP[0][2]=1;
-    matrixP[1][2]=3;
-    
-    matrixP[0][3]=6;
-    matrixP[1][3]=4;
-    
-    matrixP[0][4]=2;
-    matrixP[1][4]=5;
-    
-    matrixP[0][5]=1;
-    matrixP[1][5]=6;
-    
-    matrixP=Tools.burbujaDesc(matrixP);
-    
-    for(int i=0;i<matrixP.length;i++){
-        
-        for(int j=0;j<matrixP[0].length;j++){
-            System.out.print(matrixP[i][j]);
-        }
-        System.out.println("");
-    }
-}
- 
 
 //ICONOS DE POKEMONES EN FORMATO STRING
 //39 CARACTERES
