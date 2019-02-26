@@ -2,7 +2,7 @@ package pokemonsimulator;
 
 /**
  *
- * @author cristianmeono
+ * @author Cristian Meoño 201801397
  */
 
 

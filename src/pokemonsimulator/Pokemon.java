@@ -2,7 +2,7 @@ package pokemonsimulator;
 
 /**
  * Clase Pokemon
- * @author Cristian Meoño
+ * @author Cristian Meoño 201801397
  */
 public class Pokemon implements Cloneable {
     

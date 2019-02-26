@@ -20,13 +20,20 @@ public static void main(String[] args) throws CloneNotSupportedException {
     Data DataCollector = new Data();
         
     //Objetos Pokemon
-    Pokemon Charmander=new Pokemon(charmanderIco,"CHARMANDER");
-    Pokemon Squirtle=new Pokemon(squirtleIco,"SQUIRTLE");
-    Pokemon Bulbasaur=new Pokemon(bulbasaurIco,"BULBASAUR");
+    
+    // IDENTIFICADOR 1
     Pokemon Torchic=new Pokemon(torchicIco,"TORCHIC");
+    // IDENTIFICADOR 2
     Pokemon Mudkip=new Pokemon(mudkipIco,"MUDKIP");
+    // IDENTIFICADOR 3
     Pokemon Treecko=new Pokemon(treeckoIco,"TREECKO"); 
-      
+    // IDENTIFICADOR 4
+    Pokemon Charmander=new Pokemon(charmanderIco,"CHARMANDER");
+    // IDENTIFICADOR 5
+    Pokemon Squirtle=new Pokemon(squirtleIco,"SQUIRTLE");
+    // IDENTIFICADOR 6
+    Pokemon Bulbasaur=new Pokemon(bulbasaurIco,"BULBASAUR");
+    
         
 while(runTime){
     
