@@ -300,7 +300,7 @@ while(runTime){
             pok3=Charmander.clone();
             Charmander.counter++;
             Tools.writeMatrix(charmanderIco,43,65,31,69);
-            DataCollector.currentBattle[6]=Charmander.Name;
+            DataCollector.currentBattle[8]=Charmander.Name;
             break;
             case "5":
             pok3=Squirtle.clone();
